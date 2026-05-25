@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>faktasejarah.id</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        background: #2a1a0e;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 2.5rem 1rem 4rem;
+        font-family: "Lora", Georgia, serif;
+      }
+
+      @media (min-width: 600px) {
+        body {
+          background: #1a0f06;
+          align-items: center;
+          min-height: 100vh;
+          padding: 2rem;
+        }
+        .phone-frame {
+          width: 420px;
+          border-radius: 20px;
+          border: none;
+          box-shadow:
+            0 0 0 1px rgba(180, 140, 70, 0.25),
+            0 20px 60px rgba(0, 0, 0, 0.416);
+          overflow: hidden;
+          position: relative;
+          background: #1a0f069a;
+          display: flex;
+          flex-direction: column;
+        }
+        @media (max-width: 599px) {
+          body {
+            background: #000;
+            padding: 0;
+          }
+
+          .phone-frame {
+            background: transparent;
+            min-height: 100vh;
+          }
+
+          .phone-scroll {
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+          }
+        }
+      }
+
+      @media (max-width: 599px) {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+          min-height: 100vh;
+          overflow-x: hidden;
+          background: #000;
+        }
+
+        body {
+          padding: 0;
+        }
+
+        .phone-frame {
+          width: 100%;
+          min-height: 100vh;
+          background: transparent;
+        }
+
+        .phone-scroll {
+          position: relative;
+          min-height: 100vh;
+          overflow: hidden;
+        }
+
+        .lk-content {
+          min-height: 100vh;
+          padding-bottom: 3rem;
+        }
+      }
+
+      .bg-wallpaper {
+        position: absolute;
+        inset: 0;
+        background-image: url("lgo2.jpeg");
+        background-size: cover;
+        background-position: center top;
+        z-index: 0;
+      }
+
+      .bg-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(8, 4, 1, 0.349) 0%,
+          rgba(8, 4, 1, 0.321) 30%,
+          rgba(8, 4, 1, 0.325) 70%,
+          rgba(5, 2, 1, 0.96) 100%
+        );
+        z-index: 1;
+      }
+      .bg-grain {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        opacity: 0.15;
+        background-image: url("");
+        background-size: 120px;
+      }
+
+      .lk-content {
+        position: relative;
+        z-index: 3;
+        padding: 1.4rem 1.3rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100%;
+      }
+
+      .lk-top-rule {
+        width: 80px;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(210, 170, 100, 0.6),
+          transparent
+        );
+        margin-bottom: 1.3rem;
+      }
+
+      .lk-avatar {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 1.1rem;
+        border: 2px solid rgba(210, 170, 100, 0.5);
+        box-shadow:
+          0 0 0 4px rgba(210, 170, 100, 0.12),
+          0 8px 32px rgba(0, 0, 0, 0.6);
+        background: #1a0a04;
+      }
+
+      .lk-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .lk-name {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: 26px;
+        font-weight: 700;
+        color: #0b0b0b;
+        letter-spacing: 0.3px;
+        margin-bottom: 6px;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+      }
+
+      .lk-quote {
+        font-style: italic;
+        font-size: 14.5px;
+        color: rgba(18, 18, 17, 0.829);
+        margin-bottom: 6px;
+        text-align: center;
+      }
+
+      .lk-tags {
+        font-size: 11px;
+        color: rgba(9, 9, 9, 0.929);
+        margin-bottom: 1.4rem;
+        text-align: center;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+      }
+
+      .lk-divider {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 1.4rem;
+        width: 100%;
+        justify-content: center;
+      }
+      .lk-divider-line {
+        height: 1px;
+        width: 60px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(210, 170, 100, 0.4)
+        );
+      }
+      .lk-divider-line.right {
+        background: linear-gradient(
+          to left,
+          transparent,
+          rgba(210, 170, 100, 0.4)
+        );
+      }
+      .lk-divider-dot {
+        font-size: 13px;
+        color: rgba(210, 170, 100, 0.5);
+      }
+
+      .lk-socials {
+        display: flex;
+        gap: 14px;
+        margin-bottom: 1.6rem;
+      }
+
+      .lk-social-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid rgba(172, 166, 157, 0.082);
+        background: rgba(116, 107, 101, 0.13);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: rgba(220, 190, 120, 0.85);
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          transform 0.15s;
+        backdrop-filter: blur(4px);
+      }
+      .lk-social-btn:hover {
+        background: rgba(186, 181, 178, 0.142);
+        border-color: rgba(203, 198, 189, 0.174);
+        transform: translateY(-2px);
+      }
+      .lk-social-btn i {
+        font-size: 17px;
+      }
+
+      .lk-links {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+      }
+
+      .lk-link {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        background: rgba(185, 175, 169, 0.319);
+        border: 1px solid rgba(200, 194, 185, 0.17);
+        border-radius: 12px;
+        padding: 12px 15px;
+        cursor: pointer;
+        text-decoration: none;
+        color: #0d0d0b;
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          transform 0.15s;
+        position: relative;
+        backdrop-filter: blur(8px);
+        overflow: hidden;
+      }
+      .lk-link::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          105deg,
+          transparent 40%,
+          rgba(210, 170, 80, 0.07) 50%,
+          transparent 60%
+        );
+        transform: translateX(-100%);
+        transition: transform 0.45s;
+      }
+      .lk-link:hover::before {
+        transform: translateX(100%);
+      }
+      .lk-link:hover {
+        background: rgba(157, 149, 144, 0.774);
+        border-color: rgba(210, 170, 100, 0.5);
+        transform: translateY(-2px);
+      }
+      .lk-link:active {
+        transform: scale(0.99);
+      }
+
+      .lk-link-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .lk-link-icon svg {
+        width: 19px;
+        height: 19px;
+        fill: none;
+        stroke: #050505;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .lk-link-text {
+        flex: 1;
+        text-align: center;
+        padding-right: 18px;
+      }
+      .lk-link-label {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: #000000;
+        letter-spacing: 0.3px;
+        display: block;
+      }
+      .lk-link-sub {
+        font-size: 10.5px;
+        font-weight: 400;
+        font-style: italic;
+        color: rgba(210, 175, 100, 0.55);
+        display: block;
+        margin-top: 2px;
+      }
+      .lk-link-arrow {
+        position: absolute;
+        right: 14px;
+        font-size: 14px;
+        color: rgba(200, 160, 80, 0.45);
+      }
+      .lk-footer {
+        margin-top: 2rem;
+        font-size: 11px;
+        color: rgba(180, 145, 80, 0.45);
+        text-align: center;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="phone-frame">
+      <div class="phone-scroll">
+        <div class="bg-wallpaper"></div>
+        <div class="bg-overlay"></div>
+        <div class="bg-grain"></div>
+
+        <div class="lk-content">
+          <div class="lk-top-rule"></div>
+
+          <div class="lk-avatar">
+            <img src="lgo.png" alt="faktasejarah.id" />
+          </div>
+
+          <h1 class="lk-name">faktasejarah.id</h1>
+          <p class="lk-quote">"Masa lalu selalu meninggalkan jejak."</p>
+          <p class="lk-tags">
+            🏛 History &nbsp;&middot;&nbsp; Civilization &nbsp;&middot;&nbsp;
+            War &nbsp;&middot;&nbsp; Islam
+          </p>
+
+          <div class="lk-divider">
+            <div class="lk-divider-line"></div>
+            <span class="lk-divider-dot">&#10022;</span>
+            <div class="lk-divider-line right"></div>
+          </div>
+
+          <div class="lk-socials">
+            <a
+              class="lk-social-btn"
+              href="https://tiktok.com/@faktasejarah.id"
+              target="_blank"
+              aria-label="TikTok"
+            >
+              <i class="ti ti-brand-tiktok"></i>
+            </a>
+            <a
+              class="lk-social-btn"
+              href="https://instagram.com/faktasejarah.id"
+              target="_blank"
+              aria-label="Instagram"
+            >
+              <i class="ti ti-brand-instagram"></i>
+            </a>
+            <a
+              class="lk-social-btn"
+              href="https://wa.me/628xxxxxxxxxx"
+              target="_blank"
+              aria-label="WhatsApp"
+            >
+              <i class="ti ti-brand-whatsapp"></i>
+            </a>
+          </div>
+
+          <div class="lk-links">
+            <a
+              class="lk-link"
+              href="https://saweer.vercel.app/"
+              target="_blank"
+            >
+              <div class="lk-link-icon">
+                <img
+                  src="mny.png"
+                  alt="Saweer"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    border-radius: 4px;
+                  "
+                />
+              </div>
+              <div class="lk-link-text">
+                <span class="lk-link-label">Saweer</span>
+                <span class="lk-link-sub">Dukung konten sejarah</span>
+              </div>
+              <i class="ti ti-chevron-right lk-link-arrow"></i>
+            </a>
+
+            <a
+              class="lk-link"
+              href="https://www.faktasejarah.my.id/"
+              target="_blank"
+            >
+              <div class="lk-link-icon">
+                <img
+                  src="ChatGPT Image May 25, 2026, 11_36_07 AM.png"
+                  alt="Arsip"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    border-radius: 4px;
+                  "
+                />
+              </div>
+              <div class="lk-link-text">
+                <span class="lk-link-label">Arsip Nusantara &amp; Dunia</span>
+                <span class="lk-link-sub">Sejarah setiap hari</span>
+              </div>
+              <i class="ti ti-chevron-right lk-link-arrow"></i>
+            </a>
+
+            <a
+              class="lk-link"
+              href="https://instagram.com/faktasejarah.id"
+              target="_blank"
+            >
+              <div class="lk-link-icon">
+                <img
+                  src="igg.png"
+                  alt="Instagram"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    border-radius: 4px;
+                  "
+                />
+              </div>
+              <div class="lk-link-text">
+                <span class="lk-link-label">Instagram</span>
+                <span class="lk-link-sub">@faktasejarah.id</span>
+              </div>
+              <i class="ti ti-chevron-right lk-link-arrow"></i>
+            </a>
+
+            <a
+              class="lk-link"
+              href="https://instagram.com/faktasejarah.id"
+              target="_blank"
+            >
+              <div class="lk-link-icon">
+                <img
+                  src="book2.png"
+                  alt="Instagram"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    border-radius: 4px;
+                  "
+                />
+              </div>
+              <div class="lk-link-text">
+                <span class="lk-link-label">Masukkan ide mu</span>
+                <span class="lk-link-sub">@faktasejarah.id</span>
+              </div>
+              <i class="ti ti-chevron-right lk-link-arrow"></i>
+            </a>
+          </div>
+
+          <p class="lk-footer">faktasejarah.id &nbsp;&middot;&nbsp; 2026</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
