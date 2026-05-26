@@ -19,6 +19,8 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
       }
 
       body {
@@ -336,6 +338,11 @@
         transform: scale(0.99);
       }
 
+      .lk-link:focus,
+      .lk-social-btn:focus {
+        outline: none;
+      }
+
       .lk-link-icon {
         width: 40px;
         height: 40px;
@@ -396,7 +403,6 @@
       <div class="bg-overlay"></div>
       <div class="bg-grain"></div>
       <div class="phone-scroll">
-
         <div class="lk-content">
           <div class="lk-top-rule"></div>
 
