@@ -2,130 +2,56 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Linktreee/faktasejarah.id</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
-      rel="stylesheet"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>faktasejarah.id — Linktree</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-      *,
-      *::before,
-      *::after {
+      *, *::before, *::after {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
         -webkit-tap-highlight-color: transparent;
-        outline: none;
+      }
+
+      html, body {
+        height: 100%;
+        overflow: hidden;
       }
 
       body {
-        min-height: 100vh;
-        background: #2a1a0e;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        padding: 2.5rem 1rem 4rem;
         font-family: "Lora", Georgia, serif;
+        background: #1a0f06;
+      }
+
+      /* ── PHONE FRAME ── */
+      #app {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .phone-frame {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        overflow: hidden;
       }
 
       @media (min-width: 600px) {
-        body {
-          background: #1a0f06;
-          align-items: center;
-          min-height: 100vh;
-          padding: 2rem;
-        }
         .phone-frame {
           width: 420px;
           height: 820px;
           max-height: 92vh;
           border-radius: 20px;
-          border: none;
-          box-shadow:
-            0 0 0 1px rgba(180, 140, 70, 0.25),
-            0 20px 60px rgba(0, 0, 0, 0.416);
-          overflow: hidden;
-          position: relative;
-          background: #1a0f069a;
-          display: flex;
-          flex-direction: column;
-        }
-        .phone-scroll {
-          flex: 1;
-          overflow-y: auto;
-          overflow-x: hidden;
-          position: relative;
-          scrollbar-width: none;
-        }
-        .phone-scroll::-webkit-scrollbar {
-          display: none;
-        }
-        @media (max-width: 599px) {
-          body {
-            background: #000;
-            padding: 0;
-          }
-
-          .phone-frame {
-            background: transparent;
-            min-height: 100vh;
-          }
-
-          .phone-scroll {
-            padding: 0;
-            min-height: 100vh;
-            position: relative;
-            overflow: hidden;
-          }
+          box-shadow: 0 0 0 1px rgba(180,140,70,.25), 0 20px 60px rgba(0,0,0,.5);
         }
       }
 
-      @media (max-width: 599px) {
-        html,
-        body {
-          margin: 0;
-          padding: 0;
-          min-height: 100vh;
-          overflow-x: hidden;
-          background: #000;
-        }
-
-        body {
-          padding: 0;
-        }
-
-        .phone-frame {
-          width: 100%;
-          min-height: 100vh;
-          background: transparent;
-          position: relative;
-        }
-
-        .phone-scroll {
-          position: relative;
-          min-height: 100vh;
-          overflow: visible;
-        }
-
-        .bg-wallpaper,
-        .bg-overlay,
-        .bg-grain {
-          position: fixed !important;
-          width: 100%;
-          height: 100%;
-        }
-
-        .lk-content {
-          min-height: 100vh;
-          padding-bottom: 3rem;
-        }
-      }
-
+      /* ── BACKGROUND ── */
       .bg-wallpaper {
         position: absolute;
         inset: 0;
@@ -134,31 +60,38 @@
         background-position: center top;
         z-index: 0;
       }
-
       .bg-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-          to bottom,
-          rgba(8, 4, 1, 0.349) 0%,
-          rgba(8, 4, 1, 0.321) 30%,
-          rgba(8, 4, 1, 0.325) 70%,
-          rgba(5, 2, 1, 0.96) 100%
-        );
+        background: linear-gradient(to bottom,
+          rgba(8,4,1,.35) 0%,
+          rgba(8,4,1,.32) 30%,
+          rgba(8,4,1,.33) 70%,
+          rgba(5,2,1,.96) 100%);
         z-index: 1;
       }
       .bg-grain {
         position: absolute;
         inset: 0;
         z-index: 2;
-        opacity: 0.15;
+        opacity: .15;
         background-image: url("");
         background-size: 120px;
       }
 
-      .lk-content {
-        position: relative;
+      /* ── PAGE: HOME ── */
+      #page-home {
+        position: absolute;
+        inset: 0;
         z-index: 3;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: none;
+        transition: opacity .3s, transform .3s;
+      }
+      #page-home::-webkit-scrollbar { display: none; }
+
+      .lk-content {
         padding: 1.4rem 1.3rem 2.5rem;
         display: flex;
         flex-direction: column;
@@ -169,12 +102,7 @@
       .lk-top-rule {
         width: 80px;
         height: 1px;
-        background: linear-gradient(
-          to right,
-          transparent,
-          rgba(210, 170, 100, 0.6),
-          transparent
-        );
+        background: linear-gradient(to right, transparent, rgba(210,170,100,.6), transparent);
         margin-bottom: 1.3rem;
       }
 
@@ -184,44 +112,34 @@
         border-radius: 50%;
         overflow: hidden;
         margin-bottom: 1.1rem;
-        border: 2px solid rgba(210, 170, 100, 0.5);
-        box-shadow:
-          0 0 0 4px rgba(210, 170, 100, 0.12),
-          0 8px 32px rgba(0, 0, 0, 0.6);
+        border: 2px solid rgba(210,170,100,.5);
+        box-shadow: 0 0 0 4px rgba(210,170,100,.12), 0 8px 32px rgba(0,0,0,.6);
         background: #1a0a04;
       }
-
-      .lk-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
+      .lk-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
       .lk-name {
         font-family: "Playfair Display", Georgia, serif;
         font-size: 26px;
         font-weight: 700;
         color: #0b0b0b;
-        letter-spacing: 0.3px;
+        letter-spacing: .3px;
         margin-bottom: 6px;
-        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+        text-shadow: 0 2px 12px rgba(0,0,0,.8);
       }
-
       .lk-quote {
         font-style: italic;
         font-size: 14.5px;
-        color: rgba(18, 18, 17, 0.829);
+        color: rgba(18,18,17,.83);
         margin-bottom: 6px;
         text-align: center;
       }
-
       .lk-tags {
         font-size: 11px;
-        color: rgba(9, 9, 9, 0.929);
+        color: rgba(9,9,9,.93);
         margin-bottom: 1.4rem;
         text-align: center;
-        letter-spacing: 0.8px;
+        letter-spacing: .8px;
         text-transform: uppercase;
       }
 
@@ -236,79 +154,50 @@
       .lk-divider-line {
         height: 1px;
         width: 60px;
-        background: linear-gradient(
-          to right,
-          transparent,
-          rgba(210, 170, 100, 0.4)
-        );
+        background: linear-gradient(to right, transparent, rgba(210,170,100,.4));
       }
       .lk-divider-line.right {
-        background: linear-gradient(
-          to left,
-          transparent,
-          rgba(210, 170, 100, 0.4)
-        );
+        background: linear-gradient(to left, transparent, rgba(210,170,100,.4));
       }
-      .lk-divider-dot {
-        font-size: 13px;
-        color: rgba(210, 170, 100, 0.5);
-      }
+      .lk-divider-dot { font-size: 13px; color: rgba(210,170,100,.5); }
 
-      .lk-socials {
-        display: flex;
-        gap: 14px;
-        margin-bottom: 1.6rem;
-      }
-
+      .lk-socials { display: flex; gap: 14px; margin-bottom: 1.6rem; }
       .lk-social-btn {
         width: 38px;
         height: 38px;
         border-radius: 50%;
-        border: 1px solid rgba(172, 166, 157, 0.082);
-        background: rgba(116, 107, 101, 0.13);
+        border: 1px solid rgba(172,166,157,.08);
+        background: rgba(116,107,101,.13);
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        color: rgba(220, 190, 120, 0.85);
+        color: rgba(220,190,120,.85);
         text-decoration: none;
-        transition:
-          background 0.2s,
-          border-color 0.2s,
-          transform 0.15s;
+        transition: background .2s, border-color .2s, transform .15s;
         backdrop-filter: blur(4px);
       }
       .lk-social-btn:hover {
-        background: rgba(186, 181, 178, 0.142);
-        border-color: rgba(203, 198, 189, 0.174);
+        background: rgba(186,181,178,.14);
+        border-color: rgba(203,198,189,.17);
         transform: translateY(-2px);
       }
-      .lk-social-btn i {
-        font-size: 17px;
-      }
+      .lk-social-btn i { font-size: 17px; }
 
-      .lk-links {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 11px;
-      }
+      .lk-links { width: 100%; display: flex; flex-direction: column; gap: 11px; }
 
       .lk-link {
         display: flex;
         align-items: center;
         gap: 13px;
-        background: rgba(185, 175, 169, 0.319);
-        border: 1px solid rgba(200, 194, 185, 0.17);
+        background: rgba(185,175,169,.32);
+        border: 1px solid rgba(200,194,185,.17);
         border-radius: 12px;
         padding: 12px 15px;
         cursor: pointer;
         text-decoration: none;
         color: #0d0d0b;
-        transition:
-          background 0.2s,
-          border-color 0.2s,
-          transform 0.15s;
+        transition: background .2s, border-color .2s, transform .15s;
         position: relative;
         backdrop-filter: blur(8px);
         overflow: hidden;
@@ -317,31 +206,17 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-          105deg,
-          transparent 40%,
-          rgba(210, 170, 80, 0.07) 50%,
-          transparent 60%
-        );
+        background: linear-gradient(105deg, transparent 40%, rgba(210,170,80,.07) 50%, transparent 60%);
         transform: translateX(-100%);
-        transition: transform 0.45s;
+        transition: transform .45s;
       }
-      .lk-link:hover::before {
-        transform: translateX(100%);
-      }
+      .lk-link:hover::before { transform: translateX(100%); }
       .lk-link:hover {
-        background: rgba(157, 149, 144, 0.774);
-        border-color: rgba(210, 170, 100, 0.5);
+        background: rgba(157,149,144,.77);
+        border-color: rgba(210,170,100,.5);
         transform: translateY(-2px);
       }
-      .lk-link:active {
-        transform: scale(0.99);
-      }
-
-      .lk-link:focus,
-      .lk-social-btn:focus {
-        outline: none;
-      }
+      .lk-link:active { transform: scale(.99); }
 
       .lk-link-icon {
         width: 40px;
@@ -351,32 +226,25 @@
         justify-content: center;
         flex-shrink: 0;
       }
-      .lk-link-icon svg {
-        width: 19px;
-        height: 19px;
-        fill: none;
-        stroke: #050505;
-        stroke-width: 1.7;
-        stroke-linecap: round;
-        stroke-linejoin: round;
+      .lk-link-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 4px;
       }
-      .lk-link-text {
-        flex: 1;
-        text-align: center;
-        padding-right: 18px;
-      }
+      .lk-link-text { flex: 1; text-align: center; padding-right: 18px; }
       .lk-link-label {
         font-size: 13.5px;
         font-weight: 600;
-        color: #000000;
-        letter-spacing: 0.3px;
+        color: #000;
+        letter-spacing: .3px;
         display: block;
       }
       .lk-link-sub {
         font-size: 10.5px;
         font-weight: 400;
         font-style: italic;
-        color: rgba(210, 175, 100, 0.55);
+        color: rgba(210,175,100,.55);
         display: block;
         margin-top: 2px;
       }
@@ -384,196 +252,400 @@
         position: absolute;
         right: 14px;
         font-size: 14px;
-        color: rgba(200, 160, 80, 0.45);
+        color: rgba(200,160,80,.45);
       }
+
       .lk-footer {
         margin-top: 2rem;
         font-size: 11px;
-        color: rgba(180, 145, 80, 0.45);
+        color: rgba(180,145,80,.45);
         text-align: center;
         letter-spacing: 1.5px;
         text-transform: uppercase;
         font-style: italic;
       }
+
+      /* ── IN-APP BROWSER OVERLAY ── */
+      #browser-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        background: #0d0806;
+        transform: translateY(100%);
+        transition: transform .35s cubic-bezier(.4,0,.2,1);
+        border-radius: inherit;
+      }
+      #browser-overlay.open {
+        transform: translateY(0);
+      }
+
+      /* Browser top bar */
+      .browser-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        background: #1a0f06;
+        border-bottom: 1px solid rgba(210,170,100,.15);
+        flex-shrink: 0;
+      }
+      .browser-back {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(210,170,100,.1);
+        border: 1px solid rgba(210,170,100,.2);
+        color: rgba(210,170,100,.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        flex-shrink: 0;
+        transition: background .2s;
+      }
+      .browser-back:hover { background: rgba(210,170,100,.2); }
+      .browser-back i { font-size: 18px; }
+
+      .browser-url {
+        flex: 1;
+        background: rgba(255,255,255,.05);
+        border: 1px solid rgba(210,170,100,.15);
+        border-radius: 20px;
+        padding: 6px 14px;
+        font-size: 11.5px;
+        color: rgba(210,175,100,.7);
+        font-family: "Lora", serif;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        letter-spacing: .3px;
+      }
+      .browser-open-ext {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(210,170,100,.08);
+        border: 1px solid rgba(210,170,100,.15);
+        color: rgba(210,170,100,.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        flex-shrink: 0;
+        text-decoration: none;
+        transition: background .2s;
+      }
+      .browser-open-ext:hover { background: rgba(210,170,100,.18); }
+      .browser-open-ext i { font-size: 15px; }
+
+      /* Loading bar */
+      .browser-progress {
+        height: 2px;
+        background: linear-gradient(to right, rgba(210,170,100,0), rgba(210,170,100,.8), rgba(210,170,100,0));
+        flex-shrink: 0;
+        opacity: 0;
+        transition: opacity .3s;
+      }
+      .browser-progress.loading {
+        opacity: 1;
+        animation: progressAnim 1.5s ease-in-out infinite;
+      }
+      @keyframes progressAnim {
+        0%   { background-position: -200% center; }
+        100% { background-position: 200% center; }
+      }
+
+      /* iframe container */
+      .browser-iframe-wrap {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+      }
+      #browser-iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        background: #fff;
+      }
+
+      /* Loading spinner overlay */
+      .browser-loader {
+        position: absolute;
+        inset: 0;
+        background: #0d0806;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        transition: opacity .3s;
+        z-index: 2;
+      }
+      .browser-loader.hidden { opacity: 0; pointer-events: none; }
+      .loader-ring {
+        width: 44px;
+        height: 44px;
+        border: 3px solid rgba(210,170,100,.15);
+        border-top-color: rgba(210,170,100,.8);
+        border-radius: 50%;
+        animation: spin .8s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      .loader-text {
+        font-size: 12px;
+        color: rgba(210,170,100,.5);
+        font-family: "Lora", serif;
+        font-style: italic;
+      }
+
+      /* ── SOCIAL links — still open external (TikTok, Instagram, WA are external by nature) ── */
+      /* No change needed there — user asked about main content links */
+
+      /* ── Page transition ── */
+      .page-exit {
+        opacity: 0;
+        transform: scale(.97);
+        pointer-events: none;
+      }
     </style>
   </head>
   <body>
-    <div class="phone-frame">
-      <div class="bg-wallpaper"></div>
-      <div class="bg-overlay"></div>
-      <div class="bg-grain"></div>
-      <div class="phone-scroll">
-        <div class="lk-content">
-          <div class="lk-top-rule"></div>
+    <div id="app">
+      <div class="phone-frame">
+        <div class="bg-wallpaper"></div>
+        <div class="bg-overlay"></div>
+        <div class="bg-grain"></div>
 
-          <div class="lk-avatar">
-            <img src="lgo.png" alt="faktasejarah.id" />
+        <!-- HOME PAGE -->
+        <div id="page-home">
+          <div class="lk-content">
+            <div class="lk-top-rule"></div>
+
+            <div class="lk-avatar">
+              <img src="lgo.png" alt="faktasejarah.id" />
+            </div>
+
+            <h1 class="lk-name">faktasejarah.id</h1>
+            <p class="lk-quote">"Masa lalu selalu meninggalkan jejak."</p>
+            <p class="lk-tags">🏛 History &nbsp;&middot;&nbsp; Civilization &nbsp;&middot;&nbsp; War &nbsp;&middot;&nbsp; Islam</p>
+
+            <div class="lk-divider">
+              <div class="lk-divider-line"></div>
+              <span class="lk-divider-dot">&#10022;</span>
+              <div class="lk-divider-line right"></div>
+            </div>
+
+            <!-- Social buttons — these are genuinely external platforms, no change needed -->
+            <div class="lk-socials">
+              <a class="lk-social-btn" href="https://tiktok.com/@fakta.sejarah84" target="_blank" rel="noopener" aria-label="TikTok">
+                <i class="ti ti-brand-tiktok"></i>
+              </a>
+              <a class="lk-social-btn" href="https://instagram.com/faktasejarah.id_" target="_blank" rel="noopener" aria-label="Instagram">
+                <i class="ti ti-brand-instagram"></i>
+              </a>
+              <a class="lk-social-btn" href="https://wa.me/6282227281213" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <i class="ti ti-brand-whatsapp"></i>
+              </a>
+            </div>
+
+            <!-- Main links — dibuka di in-app browser, domain tidak berubah -->
+            <div class="lk-links">
+
+              <button class="lk-link" data-url="https://saweer.vercel.app/" data-title="Saweer">
+                <div class="lk-link-icon">
+                  <img src="mny.png" alt="Saweer" />
+                </div>
+                <div class="lk-link-text">
+                  <span class="lk-link-label">Saweer</span>
+                  <span class="lk-link-sub">Dukung konten sejarah</span>
+                </div>
+                <i class="ti ti-chevron-right lk-link-arrow"></i>
+              </button>
+
+              <button class="lk-link" data-url="https://www.faktasejarah.my.id/" data-title="Fakta Sejarah &amp; Dunia">
+                <div class="lk-link-icon">
+                  <img src="ChatGPT Image May 25, 2026, 11_36_07 AM.png" alt="Arsip" />
+                </div>
+                <div class="lk-link-text">
+                  <span class="lk-link-label">Fakta Sejarah &amp; Dunia</span>
+                  <span class="lk-link-sub">Sejarah setiap hari</span>
+                </div>
+                <i class="ti ti-chevron-right lk-link-arrow"></i>
+              </button>
+
+              <button class="lk-link" data-url="https://www.instagram.com/faktasejarah.id_" data-title="Instagram">
+                <div class="lk-link-icon">
+                  <img src="igg.png" alt="Instagram" />
+                </div>
+                <div class="lk-link-text">
+                  <span class="lk-link-label">Instagram</span>
+                  <span class="lk-link-sub">@faktasejarah.id</span>
+                </div>
+                <i class="ti ti-chevron-right lk-link-arrow"></i>
+              </button>
+
+              <button class="lk-link" data-url="https://masukan-ide-mu.vercel.app/" data-title="Masukkan Ide Mu">
+                <div class="lk-link-icon">
+                  <img src="book2.png" alt="Ide" />
+                </div>
+                <div class="lk-link-text">
+                  <span class="lk-link-label">Masukkan ide mu</span>
+                  <span class="lk-link-sub">@faktasejarah.id</span>
+                </div>
+                <i class="ti ti-chevron-right lk-link-arrow"></i>
+              </button>
+
+              <button class="lk-link" data-url="https://khazanah-islam-palembang.vercel.app/" data-title="Khazanah Islam Palembang">
+                <div class="lk-link-icon">
+                  <img src="buku.png" alt="Khazanah" />
+                </div>
+                <div class="lk-link-text">
+                  <span class="lk-link-label">Khazanah Islam Palembang</span>
+                  <span class="lk-link-sub">Sejarah Islam di Palembang</span>
+                </div>
+                <i class="ti ti-chevron-right lk-link-arrow"></i>
+              </button>
+
+            </div>
+
+            <p class="lk-footer">faktasejarah.id &nbsp;&middot;&nbsp; 2026</p>
           </div>
+        </div><!-- /page-home -->
 
-          <h1 class="lk-name">faktasejarah.id</h1>
-          <p class="lk-quote">"Masa lalu selalu meninggalkan jejak."</p>
-          <p class="lk-tags">
-            🏛 History &nbsp;&middot;&nbsp; Civilization &nbsp;&middot;&nbsp;
-            War &nbsp;&middot;&nbsp; Islam
-          </p>
-
-          <div class="lk-divider">
-            <div class="lk-divider-line"></div>
-            <span class="lk-divider-dot">&#10022;</span>
-            <div class="lk-divider-line right"></div>
-          </div>
-
-          <div class="lk-socials">
-            <a
-              class="lk-social-btn"
-              href="https://tiktok.com/@fakta.sejarah84"
-              target="_blank"
-              aria-label="TikTok"
-            >
-              <i class="ti ti-brand-tiktok"></i>
-            </a>
-            <a
-              class="lk-social-btn"
-              href="https://instagram.com/faktasejarah.id_"
-              target="_blank"
-              aria-label="Instagram"
-            >
-              <i class="ti ti-brand-instagram"></i>
-            </a>
-            <a
-              class="lk-social-btn"
-              href="https://wa.me/6282227281213"
-              target="_blank"
-              aria-label="WhatsApp"
-            >
-              <i class="ti ti-brand-whatsapp"></i>
-            </a>
-          </div>
-
-          <div class="lk-links">
-            <a
-              class="lk-link"
-              href="https://saweer.vercel.app/"
-              target="_blank"
-            >
-              <div class="lk-link-icon">
-                <img
-                  src="mny.png"
-                  alt="Saweer"
-                  style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                    border-radius: 4px;
-                  "
-                />
-              </div>
-              <div class="lk-link-text">
-                <span class="lk-link-label">Saweer</span>
-                <span class="lk-link-sub">Dukung konten sejarah</span>
-              </div>
-              <i class="ti ti-chevron-right lk-link-arrow"></i>
-            </a>
-
-            <a
-              class="lk-link"
-              href="https://www.faktasejarah.my.id/"
-              target="_blank"
-            >
-              <div class="lk-link-icon">
-                <img
-                  src="ChatGPT Image May 25, 2026, 11_36_07 AM.png"
-                  alt="Arsip"
-                  style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                    border-radius: 4px;
-                  "
-                />
-              </div>
-              <div class="lk-link-text">
-                <span class="lk-link-label">Fakta Sejarah &amp; Dunia</span>
-                <span class="lk-link-sub">Sejarah setiap hari</span>
-              </div>
-              <i class="ti ti-chevron-right lk-link-arrow"></i>
-            </a>
-
-            <a
-              class="lk-link"
-              href="https://www.instagram.com/faktasejarah.id_"
-              target="_blank"
-            >
-              <div class="lk-link-icon">
-                <img
-                  src="igg.png"
-                  alt="Instagram"
-                  style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                    border-radius: 4px;
-                  "
-                />
-              </div>
-              <div class="lk-link-text">
-                <span class="lk-link-label">Instagram</span>
-                <span class="lk-link-sub">@faktasejarah.id</span>
-              </div>
-              <i class="ti ti-chevron-right lk-link-arrow"></i>
-            </a>
-
-            <a
-              class="lk-link"
-              href="https://masukan-ide-mu.vercel.app/"
-              target="_blank"
-            >
-              <div class="lk-link-icon">
-                <img
-                  src="book2.png"
-                  alt="Instagram"
-                  style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                    border-radius: 4px;
-                  "
-                />
-              </div>
-              <div class="lk-link-text">
-                <span class="lk-link-label">Masukkan ide mu</span>
-                <span class="lk-link-sub">@faktasejarah.id</span>
-              </div>
-              <i class="ti ti-chevron-right lk-link-arrow"></i>
-            </a>
-            <a
-              class="lk-link"
-              href="https://khazanah-islam-palembang.vercel.app/"
-              target="_blank"
-            >
-              <div class="lk-link-icon">
-                <img
-                  src="buku.png"
-                  alt="Instagram"
-                  style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                    border-radius: 4px;
-                  "
-                />
-              </div>
-              <div class="lk-link-text">
-                <span class="lk-link-label">Khazanah Islam Palembang</span>
-                <span class="lk-link-sub">Sejarah Islam di Palembang</span>
-              </div>
-              <i class="ti ti-chevron-right lk-link-arrow"></i>
+        <!-- IN-APP BROWSER OVERLAY -->
+        <div id="browser-overlay" role="dialog" aria-modal="true" aria-label="Browser dalam aplikasi">
+          <div class="browser-bar">
+            <button class="browser-back" id="btn-close-browser" aria-label="Kembali">
+              <i class="ti ti-arrow-left"></i>
+            </button>
+            <div class="browser-url" id="browser-url-display">—</div>
+            <a class="browser-open-ext" id="btn-open-ext" href="#" target="_blank" rel="noopener" aria-label="Buka di browser">
+              <i class="ti ti-external-link"></i>
             </a>
           </div>
-
-          <p class="lk-footer">faktasejarah.id &nbsp;&middot;&nbsp; 2026</p>
+          <div class="browser-progress" id="browser-progress"></div>
+          <div class="browser-iframe-wrap">
+            <div class="browser-loader" id="browser-loader">
+              <div class="loader-ring"></div>
+              <p class="loader-text">Memuat halaman…</p>
+            </div>
+            <iframe
+              id="browser-iframe"
+              src="about:blank"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation-by-user-activation"
+              allow="autoplay; clipboard-read; clipboard-write"
+              title="In-App Browser"
+            ></iframe>
+          </div>
         </div>
-      </div>
-    </div>
+
+      </div><!-- /phone-frame -->
+    </div><!-- /app -->
+
+    <script>
+      const overlay    = document.getElementById('browser-overlay');
+      const iframe     = document.getElementById('browser-iframe');
+      const urlDisplay = document.getElementById('browser-url-display');
+      const btnExt     = document.getElementById('btn-open-ext');
+      const loader     = document.getElementById('browser-loader');
+      const progress   = document.getElementById('browser-progress');
+      const pageHome   = document.getElementById('page-home');
+
+      let currentUrl = '';
+
+      function openBrowser(url, title) {
+        currentUrl = url;
+
+        // Update URL bar & external link
+        urlDisplay.textContent = url.replace(/^https?:\/\//, '');
+        btnExt.href = url;
+
+        // Show loader
+        loader.classList.remove('hidden');
+        progress.classList.add('loading');
+
+        // Load iframe
+        iframe.src = url;
+
+        // Slide overlay up
+        overlay.classList.add('open');
+
+        // Subtle home page scale-back
+        pageHome.style.transition = 'transform .35s, opacity .35s';
+        pageHome.style.transform = 'scale(.97)';
+        pageHome.style.opacity = '.4';
+
+        // Update browser history without full reload (keeps TikTok happy)
+        try {
+          const slug = encodeURIComponent(url);
+          history.pushState({ browser: url }, title || '', '#view=' + slug);
+        } catch(e) {}
+      }
+
+      function closeBrowser() {
+        overlay.classList.remove('open');
+        pageHome.style.transform = '';
+        pageHome.style.opacity = '';
+
+        // Clear iframe after animation
+        setTimeout(() => {
+          iframe.src = 'about:blank';
+          loader.classList.remove('hidden');
+          progress.classList.remove('loading');
+        }, 380);
+
+        try {
+          history.back();
+        } catch(e) {}
+      }
+
+      // iframe load events
+      iframe.addEventListener('load', () => {
+        loader.classList.add('hidden');
+        progress.classList.remove('loading');
+      });
+      iframe.addEventListener('error', () => {
+        loader.classList.add('hidden');
+        progress.classList.remove('loading');
+      });
+
+      // Close button
+      document.getElementById('btn-close-browser').addEventListener('click', closeBrowser);
+
+      // Link buttons → in-app browser
+      document.querySelectorAll('.lk-link[data-url]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          openBrowser(btn.dataset.url, btn.dataset.title);
+        });
+      });
+
+      // Back button / popstate
+      window.addEventListener('popstate', (e) => {
+        if (overlay.classList.contains('open')) {
+          overlay.classList.remove('open');
+          pageHome.style.transform = '';
+          pageHome.style.opacity = '';
+          setTimeout(() => {
+            iframe.src = 'about:blank';
+            loader.classList.remove('hidden');
+            progress.classList.remove('loading');
+          }, 380);
+        }
+      });
+
+      // Handle hash on load (deep link)
+      (function() {
+        const hash = location.hash;
+        if (hash.startsWith('#view=')) {
+          const url = decodeURIComponent(hash.slice(6));
+          if (url.startsWith('http')) {
+            openBrowser(url);
+          }
+        }
+      })();
+    </script>
   </body>
 </html>
